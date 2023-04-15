@@ -1,23 +1,15 @@
 import { useState } from "react";
 
-const Country = ({
-  alt,
-  area,
-  capital,
-  languages,
-  name,
-  show,
-  showHide,
-  src,
-}) => {
+const Country = ({ alt, area, capital, languages, name, src }) => {
   const [btnText, setBtnText] = useState("show");
   const [divHidden, setDivHidden] = useState({ display: "none" });
+  const [show, setShow] = useState(true);
 
   const allLanguages = Object.values(languages).map((language) => (
     <li key={language}>{language}</li>
   ));
 
-  const handleClick = (e) => {
+  const handleClick = () => {
     if (show) {
       setBtnText("hide");
       setDivHidden({});
@@ -27,7 +19,7 @@ const Country = ({
       setBtnText("show");
       setDivHidden({ display: "none" });
     }
-    showHide();
+    setShow(!show);
   };
 
   return (

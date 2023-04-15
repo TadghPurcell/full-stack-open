@@ -7,7 +7,6 @@ const App = () => {
   const [countries, setCountries] = useState([]);
   const [currentWeather, setCurrentWeather] = useState([]);
   const [search, setSearch] = useState(null);
-  const [show, setShow] = useState(true);
 
   useEffect(() => {
     const getData = async function () {
@@ -48,10 +47,6 @@ const App = () => {
     );
   };
 
-  const showHide = () => {
-    return setShow(!show);
-  };
-
   const filterCountries = () => {
     const filteredCountries = data.filter((country) =>
       country.name.common.toLowerCase().includes(search)
@@ -84,8 +79,6 @@ const App = () => {
         languages={country.languages}
         name={country.name.common}
         src={country.flags.png}
-        show={show}
-        showHide={showHide}
       />
     ));
   };
